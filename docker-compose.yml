@@ -1,0 +1,15 @@
+version: "3"
+services:
+  notebook:
+    # https://hub.docker.com/r/jupyter/datascience-notebook
+    image: jupyter/datascience-notebook
+    ports:
+      - "8888:8888"
+    # 環境変数の設定
+    # 記事に倣って書いているが何のためかは後々調べる
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - .:/code
+    # jupyterLabに接続するためのコマンド
+    command: start-notebook.sh --NotebookApp.token=''
